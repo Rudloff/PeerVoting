@@ -12,3 +12,6 @@ var questions = [
         step: 2
     }
 ];
+var options = {
+    peerjsKey: ''
+};

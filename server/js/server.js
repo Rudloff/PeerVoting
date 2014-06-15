@@ -33,7 +33,7 @@ function connected() {
 function startPeer(id) {
     'use strict';
     $.mobile.loading('show');
-    peer = new Peer(id + '-contest', {key: 'fwez6z33ipet57b9'});
+    peer = new Peer(id + '-contest', {key: options.peerjsKey});
     peer.on('open', connected);
 }
 
