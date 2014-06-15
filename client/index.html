@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<head>
+<title>PeerVoting</title>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../bower_components/jquery-mobile-bower/css/jquery.mobile-1.4.2.min.css" />
+<script src="../bower_components/jquery/jquery.min.js"></script>
+<script src="../bower_components/jquery-mobile-bower/js/jquery.mobile-1.4.2.min.js"></script>
+<script src="../bower_components/peerjs/peer.min.js"></script>
+<script src="js/client.js"></script>
+</head>
+<body>
+<section data-role="page" id="home">
+    <header data-role="header"><h1>PeerVoting <br/>Client</h1></header>
+    <div data-role="content">
+    <ul data-role="listview">
+    <li>
+    <fieldset class="ui-field-contain">
+    <label for="contest-name">Contest name</label>
+    <input type="text" id="contest-name" />
+    </fieldset>
+    </li>
+    <li>
+    <input required id="start-peer" type="button" value="Start" />
+    </li>
+    </ul>
+    </div>
+</section>
+<section data-role="page" id="voting">
+    <header data-role="header"><h1>PeerVoting <br/>Voting</h1></header>
+    <div data-role="content">
+    <ul data-role="listview" id="questions">
+    <li>
+    <input id="vote" type="button" value="Vote" />
+    </li>
+    </ul>
+    </div>
+</section>
+</body>

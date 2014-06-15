@@ -1,0 +1,7 @@
+{
+    "name": "PeerVoting",
+    "dependencies": {
+        "peerjs": "latest",
+        "jquery-mobile-bower": "1.4.2"
+    }
+}
