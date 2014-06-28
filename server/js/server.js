@@ -1,20 +1,26 @@
-/*global $, questions, Peer*/
+/*global $, questions, Peer, options*/
 /*jslint browser: true*/
 var peer;
 var judges = [];
 
+function addNote(i, note) {
+    'use strict';
+    $('tr[data-name="' + note.name + '"]').append('<td>' + note.value + '</td>');
+}
+
 function getVote(vote) {
-    console.log(vote);
+    'use strict';
+    $.each(vote, addNote);
 }
 
 function addQuestion(i, question) {
-    var html = '<li>' + question.label + '</li>'
-    $('#votes').append(html).listview().listview('refresh').trigger('create');
+    'use strict';
+    var html = '<tr data-name="' + encodeURIComponent(question.label) + '"><th>' + question.label + '</th></tr>';
+    $('#notes tbody').append(html).trigger('create');
 }
 
 function newJudge(conn) {
     'use strict';
-    console.log(judges, conn.id, $.inArray(conn.id, judges));
     judges.push(conn.id);
     $('#judges').text(judges.length + ' judges connected');
     conn.on('open', function () {

@@ -1,13 +1,13 @@
-/*global $, Peer*/
+/*global $, Peer, options*/
 /*jslint browser: true*/
 var conn;
-    
-function addQuestion(i, question) {
+function addQuestion(index, question) {
+    'use strict';
     var html = '<li><fieldset class="ui-field-contain" data-role="controlgroup" data-type="horizontal"><legend>' + question.label + '</legend>', i;
     for (i = question.min; i <= question.max; i += question.step) {
         html += '<input name="' + encodeURIComponent(question.label) + '" id="note-' + i + '" type="radio" value="' + i + '"><label for="note-' + i + '">' + i + '</label>';
     }
-    html += '</fieldset></li>'
+    html += '</fieldset></li>';
     $('#questions').prepend(html).listview('refresh').trigger('create');
 }
 
@@ -20,7 +20,7 @@ function getQuestions(questions) {
 function startPeer(id) {
     'use strict';
     $.mobile.loading('show');
-    var peer = new Peer({key: 'fwez6z33ipet57b9'});
+    var peer = new Peer({key: options.peerjsKey});
     conn = peer.connect(id + '-contest');
     conn.on('data', getQuestions);
 }
@@ -42,6 +42,8 @@ function changePage(e) {
 function vote() {
     'use strict';
     conn.send($('#questions input:radio:checked').serializeArray());
+    $('input[type=radio]').checkboxradio('disable');
+    $('button').button().button('disable');
 }
 
 function start() {
